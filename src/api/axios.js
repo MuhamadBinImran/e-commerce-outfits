@@ -3,12 +3,24 @@ import axios from "axios";
 import { useAuthStore } from '@/stores/auth'
 import { getCurrentInstance } from 'vue'
 
+// Derive API base URL with priority:
+// 1. Explicit Vite env variable (import.meta.env.VITE_API_BASE_URL)
+// 2. Fallback to window.__API_BASE_URL__ (can be injected via script tag if needed)
+// 3. Hard-coded public IP (legacy fallback) - consider removing once envs are set in Vercel
+const FALLBACK_API = "http://13.60.188.147/api";
+let resolvedBase = FALLBACK_API;
+try {
+  if (import.meta?.env?.VITE_API_BASE_URL) {
+    resolvedBase = import.meta.env.VITE_API_BASE_URL.replace(/\/$/, '');
+  } else if (typeof window !== 'undefined' && window.__API_BASE_URL__) {
+    resolvedBase = String(window.__API_BASE_URL__).replace(/\/$/, '');
+  }
+} catch (e) {
+  // ignore – retain fallback
+}
+
 const axiosInstance = axios.create({
-  // baseURL: "http://192.168.12.45:8000/api",
-
-  // Live
-  baseURL: "http://13.60.188.147/api",
-
+  baseURL: resolvedBase,
   timeout: 20000,
   headers: {
     "Content-Type": "application/json",
