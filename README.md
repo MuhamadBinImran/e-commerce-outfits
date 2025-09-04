@@ -1,5 +1,15 @@
 # E-Commerce Outfits
 
+## Live Frontend Deployment
+
+The frontend is deployed and live on Vercel:
+
+👉 [View Live Site](https://e-commerce-outfits-p4br.vercel.app)
+
+> **Note:** Only the frontend is deployed. The backend (Laravel API) is hosted separately and must be running for full functionality.
+
+---
+
 ## Overview
 
 A modern, full-featured e-commerce platform built with Vue 3, Vite, Quasar, and Tailwind CSS. This platform supports user shopping, seller product management, and admin oversight, with a focus on responsive design, real-time features, and scalable architecture.
