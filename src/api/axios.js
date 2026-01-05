@@ -7,7 +7,7 @@ import { getCurrentInstance } from 'vue'
 // 1. Explicit Vite env variable (import.meta.env.VITE_API_BASE_URL)
 // 2. Fallback to window.__API_BASE_URL__ (can be injected via script tag if needed)
 // 3. Hard-coded public IP (legacy fallback) - consider removing once envs are set in Vercel
-const FALLBACK_API = "http://13.53.109.52/";
+const FALLBACK_API = "http://13.53.109.52/api";
 let resolvedBase = FALLBACK_API;
 try {
   if (import.meta?.env?.VITE_API_BASE_URL) {
